@@ -3,6 +3,7 @@ import propTypes from 'prop-types'
 import { View, Vibration, Text, StyleSheet } from 'react-native';
 import { CardViewWithImage } from 'react-native-simple-card-view'
 
+//La variable second, représente une seconde
 const second = 1000;
 
 export const RandomCard = ({ navigation, route}) =>{
@@ -30,11 +31,16 @@ export const RandomCard = ({ navigation, route}) =>{
     )
 }
 
+//Ici on récupère un élément dans la liste de carte
+//de manière aléatoire.
 const getRandomCard = (list) =>{
     let card = list[Math.floor(Math.random()*list.length)];
     return card;
 }
 
+//Ici on vérifi la rareté de notre carte, et cela 
+//fais vibrer le téléphone entre 2 et 10 secondes
+//en fonctione de la rareté
 const checkRarity = (item) => {
     console.log(item);
     let rarity = item.rarity;
