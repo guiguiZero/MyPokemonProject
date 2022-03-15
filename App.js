@@ -11,6 +11,7 @@ import { RandomCard } from './component/RandomCard';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  // Ici on définis les routes afin d'accéder à nos différents écrans
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -32,6 +33,9 @@ const App = () => {
 }
 
 const Home = ({navigation}) => {
+  //On récupère les données renvoyées par l'API
+  //Et on enregistre les données dans la variable
+  //res à l'aide de setRes
   const [res, setRes] = useState([]);
   useEffect(() => {
         axios.get('https://api.pokemontcg.io/v2/cards')
@@ -44,6 +48,7 @@ const Home = ({navigation}) => {
       });
         
   }, []);
+  //On défini l'affichage de notre page d'accueil
   return(
     <View>
       <Button
@@ -59,6 +64,8 @@ const Home = ({navigation}) => {
         }}
         data={res}
         renderItem={({item}) =>
+        //Ici chaque éléments de la liste (item)
+        //est représenté avec CardViewWithImage
             <CardViewWithImage
             width={300}
             source={{uri: item.images.small}}
