@@ -3,6 +3,7 @@ import propTypes from 'prop-types'
 import { View, Vibration, Text, StyleSheet } from 'react-native';
 import { CardViewWithImage } from 'react-native-simple-card-view'
 
+//Ici la variable seconde représente une seconde
 const second = 1000;
 
 export const Detail = ({ navigation, route}) =>{
@@ -10,6 +11,8 @@ export const Detail = ({ navigation, route}) =>{
     checkRarity(route.params.card);
     return(
         <View style={styles.view}>
+            //Ici CardViewWithImage, permet d'afficher les éléments 
+            //contenu dans route.params.card
             <CardViewWithImage
             width={300}
             source={{uri: route.params.card.images.small}}
@@ -29,6 +32,9 @@ export const Detail = ({ navigation, route}) =>{
     )
 }
 
+//Ici on vérifi la rareté de notre carte, et cela 
+//fais vibrer le téléphone entre 2 et 10 secondes
+//en fonctione de la rareté
 const checkRarity = (item) => {
     console.log(item);
     let rarity = item.rarity;
